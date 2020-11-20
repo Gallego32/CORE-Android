@@ -19,6 +19,8 @@ public class GetUserInfo extends AppCompatActivity {
     private TextView edad;
     private CheckBox maleCheck, femaleCheck, otherCheck;
 
+    private final int EDAD_MINIMA = 3;
+
     private EditText nameET, surnameET;
 
     @Override
@@ -41,26 +43,17 @@ public class GetUserInfo extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Primero comprobamos que el usuario no ha marcado las casillas de género de forma incoherente
-                // Si es así hacemos un alert
-                if (maleCheck.isChecked() && (femaleCheck.isChecked() || otherCheck.isChecked())
-                        || femaleCheck.isChecked() && (maleCheck.isChecked() || otherCheck.isChecked())) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(GetUserInfo.this);
+                // Primero comprobamos que el usuario ha puesto los datos correctamente
+                // Sino entramos en los distintos catch
+                try {
+                    validateUserData();
 
-                    builder.setTitle(R.string.checkbox_alert_title)
-                            .setMessage(R.string.checkbox_alert)
-                            .setPositiveButton(R.string.str_dialog_exit, null);
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                } else {
                     Intent intent = new Intent(GetUserInfo.this, ShowContent.class);
 
                     intent.putExtra("name", nameET.getText().toString() + " " + surnameET.getText().toString());
                     intent.putExtra("edad", "" + edadSeekbar.getProgress());
 
                     String gender;
-
                     if (maleCheck.isChecked())
                         gender = "hombre";
                     else if (femaleCheck.isChecked())
@@ -68,8 +61,16 @@ public class GetUserInfo extends AppCompatActivity {
                     else gender = "otro";
                     intent.putExtra("gender", gender);
 
+                    // Cambiar actividad con todos los parámetros
                     startActivity(intent);
+                } catch (MultipleCheckboxException checkboxException) {
+                    popAlert(R.string.checkbox_alert_title, R.string.checkbox_alert);
+                } catch (InvalidAgeException invalidAgeException) {
+                    popAlert(R.string.age_alert_title, R.string.age_alert);
+                } catch (DataException ignored) {
+
                 }
+
             }
         });
 
@@ -89,5 +90,26 @@ public class GetUserInfo extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Función para comprobar los datos de nuestros usuario y ver si son válidos
+    private void validateUserData() throws DataException {
+        if (maleCheck.isChecked() && (femaleCheck.isChecked() || otherCheck.isChecked())
+                || femaleCheck.isChecked() && (maleCheck.isChecked() || otherCheck.isChecked()))
+            throw new MultipleCheckboxException();
+        else if (edadSeekbar.getProgress() < EDAD_MINIMA)
+            throw new InvalidAgeException();
+    }
+
+    // Funcion genérica para hacer alerts
+    private void popAlert(int title, int msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(GetUserInfo.this);
+
+        builder.setTitle(title)
+                .setMessage(msg)
+                .setPositiveButton(R.string.str_dialog_exit, null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

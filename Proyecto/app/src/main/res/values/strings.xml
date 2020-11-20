@@ -7,8 +7,11 @@
     <string name="get_name">Nombre</string>
     <string name="get_surname">Apellidos</string>
 
-    <string name="checkbox_alert">¡Esta aplicación está a tope con la diversidad de genero! Pero por favor, selecciona solo una casilla a la vez.</string>
+    <string name="checkbox_alert">¡Esta aplicación está a tope con la diversidad de genero! Pero por favor, seleccione solo una casilla a la vez.</string>
     <string name="checkbox_alert_title">Selección de género</string>
     <string name="str_dialog_exit">OK</string>
+
+    <string name="age_alert">No creo que estés usando esta app si tienes esa edad. Seleccione correctamente su edad</string>
+    <string name="age_alert_title">Selección de edad</string>
 
 </resources>
