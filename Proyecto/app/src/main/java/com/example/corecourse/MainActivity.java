@@ -2,19 +2,18 @@ package com.example.corecourse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView newText, seekBarText, keepGoingText;
     private SeekBar seekBar;
-    private Button button;
+    private Button button, submitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 newText.setText("Ahora me siento más liberado");
+            }
+        });
+
+        submitBtn = (Button) findViewById(R.id.submit);
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                startActivity(new Intent(MainActivity.this, ShowContent.class));
             }
         });
 

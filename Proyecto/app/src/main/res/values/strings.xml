@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Core Course</string>
+    <string name="title_activity_show_content">ShowContent</string>
+
+    <string name="submit_btn">Submit</string>
+    <string name="get_data_title">Introduzca los datos requeridos</string>
+    <string name="get_name">Nombre</string>
+    <string name="get_surname">Apellidos</string>
+
+    <string name="checkbox_alert">¡Esta aplicación está a tope con la diversidad de genero! Pero por favor, selecciona solo una casilla a la vez.</string>
+    <string name="checkbox_alert_title">Selección de género</string>
+    <string name="str_dialog_exit">OK</string>
+
 </resources>

@@ -15,6 +15,7 @@
         android:text="¡¡No pulses el botón!!"
         android:textAlignment="center"
         android:textColor="#F4ABC4"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -30,6 +31,7 @@
         android:text="¿Ahora por qué no usas este slider?"
         android:textAlignment="center"
         android:textColor="#F4ABC4"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -57,6 +59,7 @@
         android:text="0"
         android:textAlignment="center"
         android:textColor="#F4ABC4"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -77,5 +80,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Venga campeón, que nos vamos"
+        android:textColor="#F4ABC4"
+        app:backgroundTint="#060930"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.786" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
