@@ -10,8 +10,20 @@
     <string name="checkbox_alert">¡Esta aplicación está a tope con la diversidad de genero! Pero por favor, seleccione solo una casilla a la vez.</string>
     <string name="checkbox_alert_title">Selección de género</string>
     <string name="str_dialog_exit">OK</string>
+    <string name="show_user_info">Introduzca los datos en la pestaña principal</string>
 
     <string name="age_alert">No creo que estés usando esta app si tienes esa edad. Seleccione correctamente su edad</string>
     <string name="age_alert_title">Selección de edad</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Aplicación hecha por Álvaro Gallego Martínez</string>
+    <string name="nav_header_subtitle">GitHub: Gallego32</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Add User</string>
+    <string name="menu_gallery">Last User</string>
+    <string name="menu_slideshow">User View</string>
 
 </resources>

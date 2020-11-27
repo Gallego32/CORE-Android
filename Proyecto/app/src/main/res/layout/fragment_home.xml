@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/fragment_get_user_info_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:background="@color/light_background"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:padding="12sp"
+        android:text="@string/get_data_title"
+        android:textColor="@color/main"
+        android:textSize="40sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="32dp"
+        android:padding="32dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_below="@+id/fragment_get_user_info_txt"
+        >
+
+        <EditText
+            android:id="@+id/fragment_name_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/get_name" />
+
+        <EditText
+            android:id="@+id/fragment_surname_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/get_surname"
+            android:layout_below="@+id/fragment_name_editText"/>
+
+        <TextView
+            android:id="@+id/fragment_edad_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edad"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:layout_below="@+id/fragment_surname_editText"/>
+
+        <SeekBar
+            android:id="@+id/fragment_edad_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_edad_text"/>
+
+        <TextView
+            android:id="@+id/fragment_edad_numberTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_edad_seekBar"
+            android:text="0"
+            android:gravity="center"
+
+            android:textSize="16sp"/>
+
+
+        <TextView
+            android:id="@+id/fragment_genero_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_edad_numberTxt"
+            android:text="Género"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"/>
+
+        <CheckBox
+            android:id="@+id/fragment_male_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Hombre"
+            android:layout_below="@+id/fragment_genero_text" />
+
+        <CheckBox
+            android:id="@+id/fragment_female_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Mujer"
+
+            android:layout_toEndOf="@+id/fragment_male_checkbox"
+            android:layout_below="@+id/fragment_genero_text"
+            android:layout_marginHorizontal="16dp"/>
+
+        <CheckBox
+            android:id="@+id/fragment_other_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Otro"
+            android:layout_toEndOf="@+id/fragment_female_checkbox"
+            android:layout_below="@+id/fragment_genero_text" />
+
+        <Button
+            android:id="@+id/fragment_submit_btn_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_background"
+            android:text="@string/submit_btn"
+            android:layout_marginVertical="16dp"
+            android:layout_below="@+id/fragment_male_checkbox"
+            android:backgroundTint="@color/light_background"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
