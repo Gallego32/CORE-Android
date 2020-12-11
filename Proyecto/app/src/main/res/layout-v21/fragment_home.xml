@@ -95,6 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Mujer"
+
             android:layout_toEndOf="@+id/fragment_male_checkbox"
             android:layout_below="@+id/fragment_genero_text"
             android:layout_marginHorizontal="16dp"/>
@@ -111,7 +112,6 @@
             android:id="@+id/fragment_submit_btn_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_background"
             android:text="@string/submit_btn"
             android:layout_marginVertical="16dp"
             android:layout_below="@+id/fragment_male_checkbox"

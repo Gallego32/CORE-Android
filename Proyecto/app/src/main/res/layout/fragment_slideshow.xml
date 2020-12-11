@@ -14,14 +14,15 @@
         android:padding="30dp"
         android:background="@android:drawable/dialog_holo_light_frame">
 
-        <TextView
-            android:id="@+id/show_user_list_info_text"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_recycler_view"
+            android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/show_user_info"
-            android:textSize="20sp"
-            android:textAlignment="center"/>
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     <string name="title_activity_show_content">ShowContent</string>
 
     <string name="submit_btn">Submit</string>
+    <string name="cancel_btn">Cancel</string>
     <string name="get_data_title">Introduzca los datos requeridos</string>
     <string name="get_name">Nombre</string>
     <string name="get_surname">Apellidos</string>

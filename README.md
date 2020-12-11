@@ -12,3 +12,6 @@ Repositorio para el desarrollo de aplicaciones Android impartido por Core Dumped
 ### Hito 3
 - **Tercer hito.** Añadida persistencia de datos de usuarios mediante TinyDB. He configurado las pestañas de la aplicación para que una de ellas te muestre información sobre el último usuario y la otra pestaña te muestre una lista de estos.
 - Además, el botón flotante de abajo a la derecha tiene la funcionalidad de borrar todos los usuarios.
+
+### Hito 4 y 5
+- Añadida Recycler View que almacena una serie de usuarios y permite modificarlos y eliminarlos.
