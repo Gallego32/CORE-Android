@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,10 @@ import com.example.corecourse.R;
 import com.example.corecourse.ShowContent;
 import com.example.corecourse.TinyDB;
 import com.example.corecourse.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -105,6 +110,24 @@ public class HomeFragment extends Fragment {
                     tinyDB.putObject("my_user", user);
 
                     tinyDB.putListObject("user_list", userLinkedList);
+
+                    // Write a message to the database
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference().child("Users");
+
+                    myRef.push().setValue(user)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getContext(), "Se ha registrado el usuario satisfactoriamente", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getContext(), "Error en la conexión con el servidor", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                 } catch (MultipleCheckboxException checkboxException) {
                     popAlert(R.string.checkbox_alert_title, R.string.checkbox_alert);

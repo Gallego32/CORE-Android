@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093115957248",
+    "project_id": "coreacademy-android",
+    "storage_bucket": "coreacademy-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093115957248:android:29a1d81e34de1f1b1c48e5",
+        "android_client_info": {
+          "package_name": "com.example.corecourse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093115957248-sp5ik99uncimk9l8gkut2v6ukqukvv88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzLC9H6CH4ZtHVH02eCBsEAI1anHDmKWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093115957248-sp5ik99uncimk9l8gkut2v6ukqukvv88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

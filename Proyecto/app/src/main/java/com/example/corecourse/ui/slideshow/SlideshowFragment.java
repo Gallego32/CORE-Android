@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +19,16 @@ import com.example.corecourse.R;
 import com.example.corecourse.TinyDB;
 import com.example.corecourse.User;
 import com.example.corecourse.UserAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class SlideshowFragment extends Fragment {
 
@@ -29,6 +38,8 @@ public class SlideshowFragment extends Fragment {
     private TextView userListTxt;
 
     private ArrayList<Object> userList = new ArrayList<Object>();
+    private ArrayList<Object> DBUserList = new ArrayList<Object>();
+    private Map<String, User> userMap = new HashMap<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +63,32 @@ public class SlideshowFragment extends Fragment {
 
         userList = tinyDB.getListObject("user_list", User.class);
 
-        UserAdapter adapter = new UserAdapter(userList);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("Users");
+
+        // Iteramos sobre la lista de usuarios y los insertamos dentro de
+        // la recycled view
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data: snapshot.getChildren()) {
+                    User user = data.getValue(User.class);
+                    System.out.println(data.getKey());
+                    userMap.put(data.getKey(), user);
+                    DBUserList.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Error en la lectura de datos", Toast.LENGTH_SHORT).show();
+                System.out.println(error.getMessage());
+            }
+        });
+
+        //UserAdapter adapter = new UserAdapter(userList);
+        //UserAdapter adapter = new UserAdapter(DBUserList);
+        UserAdapter adapter = new UserAdapter(userMap, DBUserList);
         recycler.setAdapter(adapter);
 
         /*if (userList != null) {

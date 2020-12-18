@@ -13,14 +13,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     ArrayList<Object> userArrayList;
+    Map<String, User> userMap;
     TinyDB tinyDB;
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
     public UserAdapter(ArrayList<Object> userArrayList) {
+        this.userArrayList = userArrayList;
+    }
+    public UserAdapter(Map<String, User> userMap) {
+        this.userMap = userMap;
+    }
+    public UserAdapter(Map<String, User> userMap, ArrayList<Object> userArrayList) {
+        this(userMap);
         this.userArrayList = userArrayList;
     }
 
@@ -29,7 +45,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.user_list,parent,false);
+
         tinyDB = new TinyDB(parent.getContext());
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child("Users");
+
         return new ViewHolder(view);
     }
 
@@ -75,11 +96,24 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public void removeAt(int position) {
+        User user = (User)userArrayList.get(position);
+
         userArrayList.remove(position);
         notifyItemRemoved(position);
         notifyItemChanged(position, userArrayList.size());
         notifyItemRangeChanged(position, userArrayList.size());
         tinyDB.putListObject("user_list", userArrayList);
+
+        String key = myRef.push().getKey();
+
+        for(String keyM: userMap.keySet())
+            if (userMap.get(keyM) == user)
+                key = keyM;
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/" + key, null);
+
+        myRef.updateChildren(childUpdates);
     }
 
     // Forma aproximada de mostrar un layout con unos edit text
@@ -126,6 +160,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 tinyDB.putListObject("user_list", userArrayList);
 
                 notifyItemChanged(position);
+
+                String key = myRef.push().getKey();
+
+                for(String keyM: userMap.keySet())
+                    if (userMap.get(keyM) == user)
+                        key = keyM;
+
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/" + key, user);
+                
+                myRef.updateChildren(childUpdates);
 
                 editPopup.dismiss();
             }

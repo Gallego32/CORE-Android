@@ -91,59 +91,6 @@ public class NavigationActivity extends AppCompatActivity {
         nameET = findViewById(R.id.fragment_name_editText);
         surnameET = findViewById(R.id.fragment_surname_editText);
 
-        /*
-        // Botón principal que mandará los datos a la actividad dedicada a mostrar los datos del usuario
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Primero comprobamos que el usuario ha puesto los datos correctamente
-                // Sino entramos en los distintos catch
-                try {
-                    validateUserData();
-
-                    Intent intent = new Intent(NavigationActivity.this, ShowContent.class);
-
-                    intent.putExtra("name", nameET.getText().toString() + " " + surnameET.getText().toString());
-                    intent.putExtra("edad", "" + edadSeekbar.getProgress());
-
-                    String gender;
-                    if (maleCheck.isChecked())
-                        gender = "hombre";
-                    else if (femaleCheck.isChecked())
-                        gender = "mujer";
-                    else gender = "otro";
-                    intent.putExtra("gender", gender);
-
-                    // Cambiar actividad con todos los parámetros
-                    startActivity(intent);
-                } catch (MultipleCheckboxException checkboxException) {
-                    popAlert(R.string.checkbox_alert_title, R.string.checkbox_alert);
-                } catch (InvalidAgeException invalidAgeException) {
-                    popAlert(R.string.age_alert_title, R.string.age_alert);
-                } catch (DataException ignored) {
-
-                }
-
-            }
-        });
-
-        edadSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                edad.setText("" + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });*/
-
     }
 
     @Override
